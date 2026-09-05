@@ -1,0 +1,14 @@
+app GarageCRM
+
+data Customer:
+    name
+    email
+    status = "lead"
+
+when Customer is created:
+    send welcome email
+    notify sales
+
+when payment succeeds:
+    Customer.status = "client"
+    create project
